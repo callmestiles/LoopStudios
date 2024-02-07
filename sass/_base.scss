@@ -1,0 +1,55 @@
+// Breakpoints
+$bp-large: 75em; //1200px
+$bp-medium: 56.25em; //900px
+$bp-small: 37.5em; //600px
+$bp-tiny: 20.8em; //333px
+
+:root{
+    --color-white: hsl(0, 0%, 100%);
+    --color-black: hsl(0, 0%, 0%);
+    --color-dark-grey: hsl(0, 0%, 55%);
+    --color-very-dark-grey: hsl(0, 0%, 41%);
+}
+
+*, 
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;  
+
+    @media only screen and (max-width: $bp-large){
+        font-size: 50%;
+    }
+
+    @media only screen and (max-width: $bp-medium){
+        font-size: 46%;
+    }
+}
+
+body{
+    font-family: 'Alata', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    overflow-x: hidden;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: [full-start] minmax(6rem, 1fr) 
+                           [center-start] repeat(8, [col-start] minmax(min-content, 15rem) [col-end]) [center-end]
+                           minmax(6rem, 1fr) [full-end]; 
+    grid-template-rows: minmax(min-content, 80vh) repeat(3, min-content);
+    row-gap: 15rem;
+
+    @media only screen and (max-width: $bp-tiny){
+        grid-template-columns: [full-start] minmax(1rem, 1fr) 
+                           [center-start] repeat(8, [col-start] minmax(min-content, 15rem) [col-end]) [center-end]
+                           minmax(1rem, 1fr) [full-end]; 
+    }
+}
